@@ -12,9 +12,10 @@
     "test": "npm run lint &&  mocha --check-leaks -t 10000 -b test/index.js",
     "jsdoc": "./scripts/jsdoc.sh",
     "gh-pages": "./scripts/gh-pages.sh",
-    "prepublish": "npm run build",
+    "prepublish": "npm run snyk-protect && npm run build",
     "postpublish": "./scripts/postpublish.sh",
-    "postinstall": "node ./scripts/build.js lib \"npm run build\""
+    "postinstall": "node ./scripts/build.js lib \"npm run build\"",
+    "snyk-protect": "snyk protect"
   },
   "homepage": "http://bookshelfjs.org",
   "repository": {
@@ -36,7 +37,8 @@
     "create-error": "~0.3.1",
     "inflection": "^1.5.1",
     "inherits": "~2.0.1",
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-cli": "^6.0.15",
@@ -77,5 +79,6 @@
     "web": "https://github.com/tgriesser"
   },
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "snyk": true
 }
